@@ -70,6 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgramModern.cs" />
     <Compile Include="Seller.xaml.cs">
       <DependentUpon>Seller.xaml</DependentUpon>
     </Compile>

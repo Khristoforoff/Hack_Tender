@@ -15,7 +15,43 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
          Title="MainWindow" Height="600" Width="800" WindowStyle="SingleBorderWindow"  WindowStartupLocation="CenterScreen" ResizeMode="CanResize" WindowState="Maximized" >
     <Grid Background="#FFCDE0DF">
+        <Grid Width="auto" Margin="250,0,0,0" >
+
+            <DataGrid x:Name="GridBuyer" Width="auto" AutoGenerateColumns="True"  Margin="0,100,0,0" Loaded="DataGrid_Loaded">
+                <DataGrid.Items>
+                    <local:Buyerr Typ="ИП" Names="Воронцов" selectedEntity="Воронцов И.М." entityNumber="Прокладка оптоволокна" taskName="120000" categoryName="Монтаж локальных сетей"/>
+                    <local:Buyerr Typ="Юридическое лицо" Names="Жилстрой" selectedEntity="Егоров Г.В." entityNumber="Штукатурка помещений" taskName="50000" categoryName="Капитальный ремонт строений"/>
+                    <local:Buyerr Typ="Юридическое лицо" Names="Телебыт" selectedEntity="Авдеев Г.В." entityNumber="Выполнение кадастровых работ по земельным участкам, занимаемым объектами метрополитена" taskName="200000" categoryName="Выполнение кадастровых работ"/>
+                    <local:Buyerr Typ="Юридическое лицо" Names="Электротех" selectedEntity="Путров К.А." entityNumber="Поставка коммутационного оборудования локальной вычислительной сети" taskName="80000" categoryName="Монтаж локальных сетей"/>
+                    <local:Buyerr Typ="ИП" Names="Фахитов" selectedEntity="Фахитов А.В." entityNumber="Поставка коммутационного оборудования локальной вычислительной сети" taskName="20000" categoryName="Монтаж локальных сетей"/>
+                    <local:Buyerr Typ="Юридическое лицо" Names="Энергокомплекс" selectedEntity="Фролов Е.В." entityNumber="Выполнение работ по капитальному ремонту подвала и систем водоотведения " taskName="100000" categoryName="Капитальный ремонт строений"/>
+                    <local:Buyerr Typ="Юридическое лицо" Names="Пресстехника" selectedEntity="Гаврилов К.Н." entityNumber="Выполнение кадастровых работ по земельным участкам, занимаемым объектами метрополитена" taskName="200000" categoryName="Выполнение кадастровых работ"/>
+                    <local:Buyerr Typ="ИП" Names="Кошкин" selectedEntity="Кошкин С.А." entityNumber="Подготовка технических планов" taskName="30000" categoryName="Выполнение кадастровых работ"/>
+                    <local:Buyerr Typ="ИП" Names="Бабушкин" selectedEntity="Бабушкин Н.Н." entityNumber="Поставка коммутационного оборудования локальной вычислительной сети" taskName="20000" categoryName="Монтаж локальных сетей"/>
+                    <local:Buyerr Typ="Юридическое лицо" Names="Радиостандарт" selectedEntity="Кипров И.А." entityNumber="Подготовка технических планов" taskName="30000" categoryName="Выполнение кадастровых работ"/>
+                </DataGrid.Items>
+
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Тип" Binding="{Binding Path=Typ}"/>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Names}"/>
+                    <DataGridTextColumn Header="selectedEntity" Binding="{Binding Path=selectedEntity}"/>
+                    <DataGridTextColumn Header="entityNumber" Binding="{Binding Path=entityNumber}"/>
+                    <DataGridTextColumn Header="taskName" Binding="{Binding Path=taskName}"/>
+                    <DataGridTextColumn Header="categoryName" Binding="{Binding Path=categoryName}"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+
+        </Grid>
+        
+        
+        
+        
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF212121">
+            
+
             <ListView x:Name="ListViewMenu" VerticalAlignment="Top" Margin="0 70" Foreground="LightGray" FontFamily="Mangal" SelectedIndex="0" Background="#FF606060">
                 <ListViewItem Height="60" Background="Transparent">
                     <StackPanel Orientation="Horizontal" >
@@ -27,28 +63,28 @@
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="People" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FFBBBBBB"/>
-                        <TextBlock Text="Employees" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
+                        <TextBlock Text="История" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
                     </StackPanel>
                 </ListViewItem>
 
                 <ListViewItem Height="60" >
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="Contact" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FFBBBBBB"/>
-                        <TextBlock Text="Contracts" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
+                        <TextBlock Text="Катировки" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
                     </StackPanel>
                 </ListViewItem>
 
                 <ListViewItem Height="60" >
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="Paper" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FFBBBBBB"/>
-                        <TextBlock Text="Securities" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
+                        <TextBlock Text="Документы" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
                     </StackPanel>
                 </ListViewItem>
 
                 <ListViewItem Height="60" FontFamily="Mangal" >
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="Hand" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FFBBBBBB"/>
-                        <TextBlock Text="Deals" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
+                        <TextBlock Text="Контракты" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
                     </StackPanel>
                 </ListViewItem>
             </ListView>
