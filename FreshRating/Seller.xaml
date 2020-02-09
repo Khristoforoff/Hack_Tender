@@ -24,7 +24,7 @@
                     </StackPanel>
                 </ListViewItem>
 
-                <ListViewItem Height="60" Selected="ListViewItem_Selected_1" Width="250">
+                <ListViewItem Height="60" Selected="ListViewItem_Selected_1" Width="250" Loaded="ListViewItem_Loaded">
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="People" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FFBBBBBB"/>
                         <TextBlock Text="Личный кабинет" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
@@ -41,10 +41,10 @@
                 <ListViewItem Height="60" Width="245" >
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="Paper" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FFBBBBBB"/>
-                        <TextBlock Text="Заказы" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
+                        <TextBlock Text="Рейтинг" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Height="60" Width="245" >
+                <ListViewItem Height="60" Width="245" Selected="ListViewItem_Selected_3" >
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="Paper" Width="30" Height="30" VerticalAlignment="Center" Margin="5" Foreground="#FFBBBBBB"/>
                         <TextBlock Text="Заказы" VerticalAlignment="Center" FontSize="22" Margin="20 0" Foreground="#FFBBBBBB" FontFamily="Mangal" />
@@ -52,7 +52,19 @@
                 </ListViewItem>
             </ListView>
         </Grid>
-        <Grid HorizontalAlignment="Stretch" Height="70" VerticalAlignment="Top" Width="auto" Background="White"/>
+        <Grid HorizontalAlignment="Stretch" Height="70" VerticalAlignment="Top" Width="auto" Background="White">
+            <CheckBox x:Name="checkBox" Content="Рекомендованное" HorizontalAlignment="Left" Margin="272,10,0,0" VerticalAlignment="Top" Click="checkBox_Click"/>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="443,38,0,0" VerticalAlignment="Top" Width="912">
+                <ComboBoxItem Content="Выполнение работ по монтажу, пусконаладочным работам и подключению локальных вычислительных сетей" HorizontalAlignment="Left" Width="912" Margin="0,0,-2,0"/>
+                <ComboBoxItem Content="Монтаж технологического оборудования (локальных вычислительных сетей)" HorizontalAlignment="Left" Width="910"/>
+                <ComboBoxItem Content="Поставка коммутационного оборудования локальной вычислительной сети" HorizontalAlignment="Left" Width="910"/>
+            </ComboBox>
+            <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="443,5,0,0" VerticalAlignment="Top" Width="912">
+                <ComboBoxItem x:Name="Category1" Content="Монтаж локальных сетей" HorizontalAlignment="Left" Width="910" Selected="Category1_Selected"/>
+                <ComboBoxItem Content="Капитальный ремонт строений" HorizontalAlignment="Left" Width="910"/>
+                <ComboBoxItem Content="Выполнение кадастровых работ" HorizontalAlignment="Left" Width="910"/>
+            </ComboBox>
+        </Grid>
 
         <Grid HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="250" Background="#FF212121">
             <Grid.Effect>
@@ -65,7 +77,7 @@
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="197" Margin="635,32,0,0" VerticalAlignment="Top" Width="197" Background="Red"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="197" Margin="886,32,0,0" VerticalAlignment="Top" Width="197" Background="Red"/>
         </Grid>
-        <Grid x:Name="INFO" HorizontalAlignment="Left" Height="700" Margin="255,70,0,0" VerticalAlignment="Top" Width="1110">
+        <Grid x:Name="INFO" HorizontalAlignment="Left" Height="700" Margin="255,70,0,0" VerticalAlignment="Top" Width="1110" d:IsHidden="True">
             <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="34" Margin="265,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" CaretBrush="#FF0078D7" FontSize="22">
                 <TextBox.Background>
                     <SolidColorBrush Color="White" Opacity="0.8"/>
@@ -114,6 +126,17 @@
             <Label x:Name="label_Copy9" Content="Устав не прикреплен" HorizontalAlignment="Left" Margin="569,46,0,0" VerticalAlignment="Top" FontSize="22"/>
             <Button x:Name="button_Copy4" Content="Прикрепить" HorizontalAlignment="Left" Margin="858,109,0,0" VerticalAlignment="Top" Width="198" Height="50" Click="Arenda"/>
             <Label x:Name="label_Copy10" Content="Договор аренды&#xD;&#xA;не прикреплен" HorizontalAlignment="Left" Margin="569,108,0,0" VerticalAlignment="Top" FontSize="22" Width="221" Height="74" RenderTransformOrigin="0.209,0.446"/>
+            <Label x:Name="label_Copy11" Content="Договор аренды&#xA;прикреплен" HorizontalAlignment="Left" Margin="569,108,0,0" VerticalAlignment="Top" FontSize="22" Width="221" Height="74" RenderTransformOrigin="0.209,0.446" Visibility="Hidden"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="700" Margin="255,70,0,0" VerticalAlignment="Top" Width="1110"/>
+        <Grid x:Name="Orders" HorizontalAlignment="Left" Height="690" VerticalAlignment="Top" Width="1110" Margin="255,70,0,0">
+            <ListBox x:Name="listBoxCost" HorizontalAlignment="Left" Height="670" VerticalAlignment="Top" Width="144" Loaded="listBox_Loaded"/>
+            <ListBox x:Name="listBoxTask" HorizontalAlignment="Left" Height="670" Margin="149,0,0,0" VerticalAlignment="Top" Width="257" Loaded="listBox_Loaded"/>
+            <ListBox x:Name="listBoxCategory" HorizontalAlignment="Left" Height="670" Margin="411,0,0,0" VerticalAlignment="Top" Width="224" Loaded="listBox_Loaded"/>
+            <ListBox x:Name="listBoxCustomer" HorizontalAlignment="Left" Height="670" Margin="635,0,0,0" VerticalAlignment="Top" Width="236" Loaded="listBox_Loaded"/>
+            <ListBox x:Name="listBoxRating1" HorizontalAlignment="Left" Height="670" Margin="871,0,0,0" VerticalAlignment="Top" Width="84" Loaded="listBox_Loaded"/>
+            <ListBox x:Name="listBoxRating2" HorizontalAlignment="Left" Height="670" Margin="955,0,0,0" VerticalAlignment="Top" Width="74" Loaded="listBox_Loaded"/>
+            <ListBox x:Name="listBoxRating3" HorizontalAlignment="Left" Height="670" Margin="1034,0,0,0" VerticalAlignment="Top" Width="76" Loaded="listBox_Loaded"/>
         </Grid>
     </Grid>
 </Window>
